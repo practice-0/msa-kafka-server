@@ -15,8 +15,3 @@ services:
       KAFKA_LOG_DIRS: /var/lib/kafka/data
       KAFKA_NUM_PARTITIONS: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-
-networks:
-  default:
-    external: true
-    name: msa-net
