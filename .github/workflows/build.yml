@@ -10,12 +10,16 @@ jobs:
     steps:
       - name: ec2 SSH
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          KAFKA_SERVER_HOST: ${{ secrets.KAFKA_SERVER_HOST }}
         with:
           host: ${{ secrets.KAFKA_SERVER_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
+          env: KAFKA_SERVER_HOST
           script_stop: true
           script: |
+            echo ${KAFKA_SERVER_HOST}
             cd /home/ubuntu/msa-kafka-server
             git pull origin master
             docker compose pull
