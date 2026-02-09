@@ -1,6 +1,7 @@
 services:
   kafka-server:
     image: apache/kafka:4.1.0
+    restart: unless-stopped
     ports:
       - "9092:9092"
     environment:
